@@ -11,18 +11,37 @@
     --secondary-text-color: #577592;
     --accent-color: #2294ed;
     --accent-color-dark: #1d69a3;
+    --background-color: #f0f4f8;
+    --card-background-color: #fff;
+    --card-hover-background-color: #f9fdff;
+    --dark-background-color: #121212;
+    --dark-card-background-color: #1e1e1e;
+    --dark-card-hover-background-color: #333333;
+    --dark-text-color: #e4e6eb;
+    --dark-secondary-text-color: #bbbbbb;
+    --dark-nav-background-color: #1c1c1c;
 }
 
 body {
     font-family: "Poppins", sans-serif;
     color: var(--primary-text-color);
-    background-color: #f0f4f8;
+    background-color: var(--background-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: var(--dark-background-color);
+    color: var(--dark-text-color);
 }
 
 p {
     font-family: "Roboto", sans-serif;
     color: var(--secondary-text-color);
     line-height: 1.4rem;
+}
+
+body.dark-mode p {
+    color: var(--dark-secondary-text-color);
 }
 
 a {
@@ -52,6 +71,12 @@ nav {
     z-index: 99;
     left: 0;
     right: 0;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+body.dark-mode nav {
+    background-color: var(--dark-nav-background-color);
+    box-shadow: 0 0 4px #000;
 }
 
 .main-nav {
@@ -75,11 +100,19 @@ nav {
     color: var(--secondary-text-color);
 }
 
+body.dark-mode .hover-link:hover {
+    color: var(--dark-secondary-text-color);
+}
+
 .hover-link:active {
     color: red;
 }
 
 .nav-item.active {
+    color: var(--accent-color);
+}
+
+body.dark-mode .nav-item.active {
     color: var(--accent-color);
 }
 
@@ -95,6 +128,12 @@ nav {
     border-radius: 4px;
     border: 2px solid #bbd0e2;
     font-family: "Roboto", sans-serif;
+}
+
+body.dark-mode .news-input {
+    border: 2px solid #444;
+    background-color: #333;
+    color: var(--dark-text-color);
 }
 
 .search-button {
@@ -150,15 +189,23 @@ main {
     box-shadow: 0 0 4px #d4ecff;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #fff;
+    background-color: var(--card-background-color);
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
+body.dark-mode .card {
+    background-color: var(--dark-card-background-color);
+}
+
 .card:hover {
     box-shadow: 1px 1px 8px #d4ecff;
-    background-color: #f9fdff;
+    background-color: var(--card-hover-background-color);
     transform: translateY(-2px);
+}
+
+body.dark-mode .card:hover {
+    background-color: var(--dark-card-hover-background-color);
 }
 
 .card-header img {
@@ -173,4 +220,67 @@ main {
 
 .news-source {
     margin-block: 12px;
+}
+
+body.dark-mode .news-source {
+    color: var(--dark-secondary-text-color);
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.favorite-button, .share-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.favorite-button:hover, .share-button:hover {
+    color: var(--accent-color-dark);
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 100;
+}
+
+.loading-spinner.hidden {
+    display: none;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.error-message.hidden {
+    display: none;
+}
+
+.dark-mode-toggle {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dark-mode-toggle input {
+    margin-right: 8px;
+}
+
+body.dark-mode .dark-mode-toggle label {
+    color: var(--dark-text-color);
 }

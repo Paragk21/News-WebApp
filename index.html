@@ -16,7 +16,9 @@
             <div class="nav-links">
                 <ul class="flex">
                     <li class="hover-link nav-item" id="top-news" onclick="onNavItemClick('top-headlines')">Top News</li>
-                    <li class="hover-link nav-item" id="ipl" onclick="onNavItemClick('ipl')">IPL</li>
+                    <li class="hover-link nav-item" id="sports" onclick="onNavItemClick('sports')">Sports</li>
+                    <li class="hover-link nav-item" id="technology" onclick="onNavItemClick('technology')">Technology</li>
+                    <li class="hover-link nav-item" id="health" onclick="onNavItemClick('health')">Health</li>
                     <li class="hover-link nav-item" id="finance" onclick="onNavItemClick('finance')">Finance</li>
                     <li class="hover-link nav-item" id="politics" onclick="onNavItemClick('politics')">Politics</li>
                 </ul>
@@ -24,6 +26,10 @@
             <div class="search-bar flex">
                 <input id="search-text" type="text" class="news-input" placeholder="e.g. Science">
                 <button id="search-button" class="search-button">Search</button>
+            </div>
+            <div class="dark-mode-toggle">
+                <input type="checkbox" id="dark-mode-toggle">
+                <label for="dark-mode-toggle">🌙</label>
             </div>
         </div>
     </nav>
@@ -44,9 +50,16 @@
                 <h3 id="news-title">This is the Title</h3>
                 <h6 class="news-source" id="news-source">End Gadget 26/08/2023</h6>
                 <p class="news-desc" id="news-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae saepe quis voluptatum quisquam vitae doloremque facilis molestias quae ratione cumque!</p>
+                <div class="card-actions">
+                    <button class="favorite-button">❤️</button>
+                    <button class="share-button">🔗</button>
+                </div>
             </div>
         </div>
     </template>
+
+    <div id="loading-spinner" class="loading-spinner hidden"></div>
+    <div id="error-message" class="error-message hidden">An error occurred. Please try again later.</div>
 
     <script src="script.js"></script>
 </body>
