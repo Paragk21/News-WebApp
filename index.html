@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav>
         <div class="main-nav container flex">
             <a href="#" onclick="reload()" class="company-logo">
@@ -16,6 +15,7 @@
             </a>
             <div class="nav-links">
                 <ul class="flex">
+                    <li class="hover-link nav-item" id="top-news" onclick="onNavItemClick('top-headlines')">Top News</li>
                     <li class="hover-link nav-item" id="ipl" onclick="onNavItemClick('ipl')">IPL</li>
                     <li class="hover-link nav-item" id="finance" onclick="onNavItemClick('finance')">Finance</li>
                     <li class="hover-link nav-item" id="politics" onclick="onNavItemClick('politics')">Politics</li>
@@ -27,12 +27,13 @@
             </div>
         </div>
     </nav>
-    
 
     <main>
-        <div class="cards-container congtainer flex" id="cards-container">
+        <div class="cards-container container flex" id="cards-container"></div>
+        <div class="load-more-container container flex">
+            <button id="load-more-button" class="load-more-button">Load More</button>
+        </div>
     </main>
-
 
     <template id="template-news-card">
         <div class="card">
@@ -49,4 +50,4 @@
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
