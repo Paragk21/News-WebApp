@@ -4,8 +4,12 @@ const topHeadlinesUrl = "https://newsapi.org/v2/top-headlines?country=in&apiKey=
 
 let page = 1;
 let currentQuery = "India";
+let darkMode = false;
 
-window.addEventListener("load", () => fetchTopHeadlines());
+window.addEventListener("load", () => {
+    fetchTopHeadlines();
+    loadDarkMode();
+});
 
 function reload() {
     window.location.reload();
@@ -87,11 +91,6 @@ function fillDataInCard(cardClone, article) {
         window.open(article.url, "_blank");
     });
 
-    const favoriteButton = cardClone.querySelector(".favorite-button");
-    favoriteButton.addEventListener("click", () => {
-        addToFavorites(article);
-    });
-
     const shareButton = cardClone.querySelector(".share-button");
     shareButton.addEventListener("click", () => {
         shareArticle(article.url);
@@ -133,15 +132,45 @@ loadMoreButton.addEventListener("click", () => {
 
 const darkModeToggle = document.getElementById("dark-mode-toggle");
 
-darkModeToggle.addEventListener("change", () => {
-    document.body.classList.toggle("dark-mode");
+darkModeToggle.addEventListener("click", () => {
+    toggleDarkMode();
 });
 
-function addToFavorites(article) {
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    favorites.push(article);
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-    alert("Article added to favorites!");
+function toggleDarkMode() {
+    darkMode = !darkMode;
+    saveDarkMode();
+    applyDarkMode();
+}
+
+function applyDarkMode() {
+    document.body.classList.toggle("dark-mode", darkMode);
+    if (darkMode) {
+        darkModeToggle.innerHTML = "☀️"; // Change to sun icon in dark mode
+    } else {
+        darkModeToggle.innerHTML = "🌙"; // Change to moon icon in light mode
+    }
+}
+
+function reload() {
+    window.location.reload();
+}
+
+// Function to toggle sidebar visibility
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.style.left = sidebar.style.left === "-250px" ? "0" : "-250px";
+}
+
+function loadDarkMode() {
+    const darkModeSetting = localStorage.getItem("darkMode");
+    if (darkModeSetting !== null) {
+        darkMode = JSON.parse(darkModeSetting);
+        applyDarkMode();
+    }
+}
+
+function saveDarkMode() {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
 }
 
 function shareArticle(url) {

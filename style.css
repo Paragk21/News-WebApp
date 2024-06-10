@@ -232,14 +232,14 @@ body.dark-mode .news-source {
     padding: 8px 0;
 }
 
-.favorite-button, .share-button {
+.share-button {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 1.2rem;
 }
 
-.favorite-button:hover, .share-button:hover {
+.share-button:hover {
     color: var(--accent-color-dark);
 }
 
@@ -252,8 +252,8 @@ body.dark-mode .news-source {
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(255, 255, 255, 0.8);
-    z-index: 100;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.7);
 }
 
 .loading-spinner.hidden {
@@ -263,6 +263,7 @@ body.dark-mode .news-source {
 .error-message {
     color: red;
     text-align: center;
+    font-size: 1.2rem;
     margin-top: 20px;
 }
 
@@ -271,16 +272,7 @@ body.dark-mode .news-source {
 }
 
 .dark-mode-toggle {
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
+    font-size: 1.5rem;
     cursor: pointer;
-}
-
-.dark-mode-toggle input {
-    margin-right: 8px;
-}
-
-body.dark-mode .dark-mode-toggle label {
-    color: var(--dark-text-color);
+    margin-left: 16px;
 }
